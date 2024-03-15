@@ -92,7 +92,7 @@ install_pkgs() {
 install_shortcut() {
   cat > /etc/sbox/sbox.sh << EOF
 #!/usr/bin/env bash
-bash <(curl -fsSL https://github.com/k3e1/rep/raw/main/sing-box.sh) \$1
+bash <(curl -fsSL https://github.com/k3e1/rep/raw/main/sbox.sh) \$1
 EOF
   chmod +x /etc/sbox/sbox.sh
   ln -sf /etc/sbox/sbox.sh /usr/bin/sbox

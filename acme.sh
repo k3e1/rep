@@ -16,7 +16,7 @@
 #Some constans here
 OS_CHECK=''
 CERT_DOMAIN=''
-CERT_DEFAULT_INSTALL_PATH='/root/cert/'
+CERT_DEFAULT_INSTALL_PATH='/etc/cert/'
 
 #Some basic settings here
 plain='\033[0m'
@@ -99,7 +99,7 @@ install_acme() {
 #function for domain check
 domain_valid_check() {
     local domain=""
-    read -p "请输入你的域名:" domain
+    read -p "请输入你的域名（泛域名则输入顶级域，例如example.com):" domain
     LOGD "你输入的域名为:${domain},正在进行域名合法性校验..."
     #here we need to judge whether there exists cert already
     local currentCert=$(~/.acme.sh/acme.sh --list | tail -1 | awk '{print $1}')
@@ -225,9 +225,9 @@ ssl_cert_issue_standalone() {
         LOGI "证书申请成功,开始安装证书..."
     fi
     #install cert
-    ~/.acme.sh/acme.sh --installcert -d ${CERT_DOMAIN} --ca-file /root/cert/ca.cer \
-    --cert-file /root/cert/${CERT_DOMAIN}.cer --key-file /root/cert/${CERT_DOMAIN}.key \
-    --fullchain-file /root/cert/fullchain.cer
+    ~/.acme.sh/acme.sh --installcert -d ${CERT_DOMAIN} --ca-file /etc/cert/ca.cer \
+    --cert-file /etc/cert/${CERT_DOMAIN}.cer --key-file /etc/cert/${CERT_DOMAIN}.key \
+    --fullchain-file /etc/cert/fullchain.cer
 
     if [ $? -ne 0 ]; then
         LOGE "证书安装失败,脚本退出"
@@ -290,9 +290,9 @@ ssl_cert_issue_by_cloudflare() {
         else
             LOGI "证书签发成功,安装中..."
         fi
-        ~/.acme.sh/acme.sh --installcert -d ${CERT_DOMAIN} -d *.${CERT_DOMAIN} --ca-file /root/cert/ca.cer \
-        --cert-file /root/cert/${CERT_DOMAIN}.cer --key-file /root/cert/${CERT_DOMAIN}.key \
-        --fullchain-file /root/cert/fullchain.cer
+        ~/.acme.sh/acme.sh --installcert -d ${CERT_DOMAIN} -d *.${CERT_DOMAIN} --ca-file /etc/cert/ca.cer \
+        --cert-file /etc/cert/${CERT_DOMAIN}.cer --key-file /etc/cert/${CERT_DOMAIN}.key \
+        --fullchain-file /etc/cert/fullchain.cer
         if [ $? -ne 0 ]; then
             LOGE "证书安装失败,脚本退出"
             exit 1

@@ -12,3 +12,6 @@ bash <(curl -fsSL https://github.com/k3e1/rep/raw/main/acme.sh)
 
 ## docker安装
 [docker](https://gist.github.com/k3e1/5e353d46d791a1d0bb68002a49a4b856)
+
+## worker-sub.js
+参考cf worker

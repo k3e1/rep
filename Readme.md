@@ -1,4 +1,4 @@
-## sing-box自用脚本（可自行在配置文件中关闭sniff来使用tor）
+## sing-box自用脚本（可自行在配置文件中关闭sniff来使用tor,sniff: false）
 ```
 bash <(curl -fsSL https://github.com/k3e1/rep/raw/main/sbox.sh)
 ```

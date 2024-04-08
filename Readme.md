@@ -15,3 +15,9 @@ bash <(curl -fsSL https://github.com/k3e1/rep/raw/main/acme.sh)
 
 ## worker-sub.js
 参考cf worker
+
+## 流媒体检测
+
+```
+bash <(curl -L -s check.unlock.media)
+```
